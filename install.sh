@@ -17,6 +17,12 @@ brew install \
 	jq \
 	vim
 go get github.com/cdlewis/git-switch
+xcode-select --install
 
 # Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Stretchly fork
+git clone git@github.com:cdlewis/stretchly.git
+cd stretchly
+npm run dist
