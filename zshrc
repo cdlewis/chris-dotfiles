@@ -25,3 +25,26 @@ alias yeet-pants="PANTS_CONCURRENT=True ~/workspace/source/pants ng-killall && ~
 killport() {
   lsof -nti:$1 | xargs kill -9
 }
+
+# Notify user when a long running command finishes (> 15 seconds)
+preexec() {
+  command_start_time=$SECONDS
+  command_summary="$2"
+}
+precmd() {
+  execution_time=$(($SECONDS - $command_start_time))
+  if [ -n "$command_start_time" ] && [ $execution_time -gt 14 ]; then
+    ( \
+      terminal-notifier \
+        -title "Long running command finished" \
+	-subtitle "Duration: $execution_time seconds" \
+        -message "$command_summary" \
+      &> /dev/null & \
+    )
+
+  fi;
+
+  # `precmd` can be triggered without a `preexec`. Unset to avoid
+  # spamming notifications.
+  command_start_time=""
+}
