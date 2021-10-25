@@ -25,3 +25,8 @@ alias yeet-pants="PANTS_CONCURRENT=True ~/workspace/source/pants ng-killall && ~
 killport() {
   lsof -nti:$1 | xargs kill -9
 }
+
+# Sensible PDF image compression
+compressPdf () {
+  gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dCompatibilityLevel=1.7 -dNOPAUSE -dQUIET -dPDFSETTINGS=/prepress -sOutputFile="$1_compressed.pdf" "$1"
+}
