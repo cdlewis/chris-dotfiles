@@ -27,11 +27,6 @@ killport() {
   lsof -nti:$1 | xargs kill -9
 }
 
-# Pulse VPN is trash
-killvpn() {
-  sudo launchctl unload /Library/LaunchDaemons/net.pulsesecure.AccessService.plist && sudo launchctl load /Library/LaunchDaemons/net.pulsesecure.AccessService.plist
-}
-
 # CrashPlan is trash
 killcrashplan() {
   CRASHPLAN_PROCESS=$(ps -ax | grep -m 1 CrashPlanService.app | awk '{print $1}')

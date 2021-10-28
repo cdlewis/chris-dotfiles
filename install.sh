@@ -16,7 +16,8 @@ brew install \
 	terminal-notifier \ # Needed for notifications scripts
 	jq \
 	vim \
-	Maccy # Clipboard helper
+	Maccy \ # Clipboard helper
+	gs # ghost script
 go get github.com/cdlewis/git-switch
 xcode-select --install
 
