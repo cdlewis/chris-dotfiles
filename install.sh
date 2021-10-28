@@ -13,9 +13,10 @@ brew install \
 
 # Utilities
 brew install \
-	terminal-notifier \
+	terminal-notifier \ # Needed for notifications scripts
 	jq \
-	vim
+	vim \
+	Maccy # Clipboard helper
 go get github.com/cdlewis/git-switch
 xcode-select --install
 
@@ -26,3 +27,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone git@github.com:cdlewis/stretchly.git
 cd stretchly
 npm run dist
+
+# Set new screenshots directory to avoid cluttering desktop
+mkdir ~/Desktop/screenshots
+defaults write com.apple.screencapture location ~/Desktop/screenshots
