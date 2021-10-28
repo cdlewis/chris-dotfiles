@@ -69,3 +69,8 @@ precmd() {
   # spamming notifications.
   command_start_time=""
 }
+
+# Sensible PDF image compression
+compressPdf () {
+  gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dCompatibilityLevel=1.7 -dNOPAUSE -dQUIET -dPDFSETTINGS=/prepress -sOutputFile="$1_compressed.pdf" "$1"
+}
