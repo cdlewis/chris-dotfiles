@@ -17,9 +17,13 @@ brew install \
 	jq \
 	vim \
 	Maccy \ # Clipboard helper
-	gs # ghost script
+	gs \ # ghost script
+	mas # mac app store cli
 go get github.com/cdlewis/git-switch
 xcode-select --install
+
+# Mac App Store
+mas install 937984704 # Amphetamine 'keep awake' app
 
 # Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
