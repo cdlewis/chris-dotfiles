@@ -3,7 +3,7 @@ ZSH_POWERLINE_SINGLE_LINE="true"
 ZSH_POWERLINE_SHOW_USER="false"
 ZSH_POWERLINE_SHOW_IP="false"
 ZSH_POWERLINE_SHOW_GIT_STATUS="false"
-ZSH_POWERLINE_SHOW_GIT_BRAHCH_ONLY="true"
+ZSH_POWERLINE_SHOW_GIT_BRANCH_ONLY="true"
 ZSH_POWERLINE_SHOW_OS="false"
 ZSH_THEME="solarized-powerline"
 
@@ -18,23 +18,20 @@ alias rebase="git fetch && git rebase origin/master"
 EDITOR=vim
 alias yeet="arc diff --add-all --message \"We made improvements and squashed bugs so this diff is even better for you.\""
 
-# Pants Quality of Life
-alias nuke-pants="PANTS_CONCURRENT=True ~/workspace/source/pants clean-all && ~/workspace/source/pants ng-killall && ~/workspace/source/pants kill-pantsd"
-alias yeet-pants="PANTS_CONCURRENT=True ~/workspace/source/pants ng-killall && ~/workspace/source/pants kill-pantsd"
-
 # Kill any application listening on a given port
 killport() {
   lsof -nti:$1 | xargs kill -9
 }
 
-# CrashPlan is trash
-killcrashplan() {
-  CRASHPLAN_PROCESS=$(ps -ax | grep -m 1 CrashPlanService.app | awk '{print $1}')
-  echo "Adjusting crashplan priority $CRASHPLAN_PROCESS"
-  sudo renice 20 $CRASHPLAN_PROCESS
-  CODE42_PROCESS=$(ps -ax | grep -m 1 Code42Service.app | awk '{print $1}')
-  echo "Adjusting code42 priority $CODE42_PROCESS"
-  sudo renice 20 $CODE42_PROCESS
+# When pre-installed trash decides to eat up every CPU core
+chill() {
+  TARGET=$1
+  while true; do
+    PROCESS_TO_CHILL=$(ps -ax | grep -m 1 $TARGET | awk '{print $1}')
+    echo "Telling $TARGET($PROCESS_TO_CHILL) to chill for a sec"
+    sudo kill $PROCESS_TO_CHILL
+    sleep 3
+  done
 }
 
 # Notify user when a long running command finishes (> 15 seconds)
@@ -57,6 +54,8 @@ precmd() {
           -message "$command_summary" \
         &> /dev/null & \
       )
+
+      echo "$command_summary" | rotatelogs -t ~/long_running_commands.log 100M
     fi;
   fi;
 
