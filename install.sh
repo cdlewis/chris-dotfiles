@@ -2,8 +2,12 @@
 
 set -euxo pipefail
 
+if ! xcode-select -p; then
+	xcode-select --install
+fi
+
 # Set up homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew analytics off
 
 # Languages
@@ -13,25 +17,18 @@ brew install \
 
 # Utilities
 brew install \
-	terminal-notifier \ # Needed for notifications scripts
+	terminal-notifier \
 	jq \
 	vim \
-	Maccy \ # Clipboard helper
-	gs \ # ghost script
-	mas # mac app store cli
-go get github.com/cdlewis/git-switch
-xcode-select --install
+	Maccy \
+	gs \
+	mas
 
 # Mac App Store
 mas install 937984704 # Amphetamine 'keep awake' app
 
 # Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# Stretchly fork
-git clone git@github.com:cdlewis/stretchly.git
-cd stretchly
-npm run dist
 
 # Set new screenshots directory to avoid cluttering desktop
 mkdir ~/Desktop/screenshots
