@@ -27,6 +27,7 @@ brew install \
 # Mac App Store
 mas install 937984704 # Amphetamine 'keep awake' app
 mas install 1091189122 # Bear – Markdown Notes
+mas install 1351639930 # Gifski
 
 # Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
