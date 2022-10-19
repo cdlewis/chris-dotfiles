@@ -7,8 +7,10 @@ if ! xcode-select -p; then
 fi
 
 # Set up homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew analytics off
+if ! which brew; then
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	brew analytics off
+fi
 
 # Languages
 brew install \
