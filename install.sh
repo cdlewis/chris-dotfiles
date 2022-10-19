@@ -32,7 +32,9 @@ mas install 1091189122 # Bear – Markdown Notes
 mas install 1351639930 # Gifski
 
 # Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if [ ! -d ~/.oh-my-zsh ]; then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
 
 # Set new screenshots directory to avoid cluttering desktop
 mkdir ~/Desktop/screenshots
