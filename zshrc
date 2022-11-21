@@ -23,13 +23,16 @@ killport() {
   lsof -nti:$1 | xargs kill -9
 }
 
+# Allow sudo to expand aliases by making sudo itself an alias
+alias sudo='sudo '
+
 # When pre-installed trash decides to eat up every CPU core
 chill() {
   TARGET=$1
   while true; do
     PROCESS_TO_CHILL=$(ps -ax | grep -m 1 $TARGET | awk '{print $1}')
     echo "Telling $TARGET($PROCESS_TO_CHILL) to chill for a sec"
-    sudo kill $PROCESS_TO_CHILL
+    kill $PROCESS_TO_CHILL
     sleep 3
   done
 }
