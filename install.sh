@@ -6,9 +6,14 @@ if ! xcode-select -p; then
 	xcode-select --install
 fi
 
+softwareupdate --install-rosetta
+
 # Set up homebrew
 if ! which brew; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /Users/chris/.zprofile
+	echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/chris/.zprofile
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 	brew analytics off
 fi
 
