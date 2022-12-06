@@ -71,3 +71,9 @@ precmd() {
 compressPdf () {
   gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dCompatibilityLevel=1.7 -dNOPAUSE -dQUIET -dPDFSETTINGS=/prepress -sOutputFile="$1_compressed.pdf" "$1"
 }
+
+# Nobody asked for you to send me an HEIC
+convertHeic () {
+  mkdir -p Converted
+  for i in *.HEIC; do sips -s format jpeg $i --out Converted/$i.jpeg; done
+}

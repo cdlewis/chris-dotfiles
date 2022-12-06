@@ -13,9 +13,10 @@ if ! which brew; then
 fi
 
 # Languages
-brew install \
-	go \
-	node
+brew install go
+brew install node
+brew install coursier/formulas/coursier
+cs setup
 
 # Utilities
 brew install \
