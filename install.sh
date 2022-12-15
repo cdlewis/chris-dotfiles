@@ -36,6 +36,7 @@ brew install \
 mas install 937984704 # Amphetamine 'keep awake' app
 mas install 1091189122 # Bear – Markdown Notes
 mas install 1351639930 # Gifski
+mas install 803453959 # Slack
 
 # Oh My Zsh
 if [ ! -d ~/.oh-my-zsh ]; then
