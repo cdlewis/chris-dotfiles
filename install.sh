@@ -11,8 +11,8 @@ softwareupdate --install-rosetta
 # Set up homebrew
 if ! which brew; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /Users/chris/.zprofile
-	echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/chris/.zprofile
+	echo '# Set PATH, MANPATH, etc., for Homebrew.' >> ~/.zprofile
+	echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 	brew analytics off
 fi
@@ -28,9 +28,9 @@ brew install \
 	terminal-notifier \
 	jq \
 	vim \
-	Maccy \
 	gs \
-	mas
+	mas \
+	Maccy
 
 # Mac App Store
 mas install 937984704 # Amphetamine 'keep awake' app

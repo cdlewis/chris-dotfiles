@@ -6,6 +6,7 @@ ZSH_POWERLINE_SHOW_GIT_STATUS="false"
 ZSH_POWERLINE_SHOW_GIT_BRANCH_ONLY="true"
 ZSH_POWERLINE_SHOW_OS="false"
 ZSH_THEME="solarized-powerline"
+DISABLE_UPDATE_PROMPT=true
 
 # Git Shortcuts
 alias gst="git status"
@@ -37,34 +38,8 @@ chill() {
   done
 }
 
-# Notify user when a long running command finishes (> 15 seconds)
-preexec() {
-  command_start_time=$SECONDS
-  command_summary="$2"
-}
 precmd() {
-  if [ -n "$command_start_time" ]; then
-    execution_time=$(($SECONDS - $command_start_time))
-
-    # Some commands are uninteresting (e.g. editting a file)
-    ignore_list="^(vim)"
-
-    if [ $execution_time -gt 14 ] && [[ ! $command_summary =~ $ignore_list  ]]; then
-      ( \
-        terminal-notifier \
-          -title "Long running command finished" \
-	  -subtitle "Duration: $execution_time seconds" \
-          -message "$command_summary" \
-        &> /dev/null & \
-      )
-
-      echo "$command_summary" | rotatelogs -t ~/long_running_commands.log 100M
-    fi;
-  fi;
-
-  # `precmd` can be triggered without a `preexec`. Unset to avoid
-  # spamming notifications.
-  command_start_time=""
+  if [[ "$(($RANDOM % 10))" -gt "8" ]]; then echo "🥰 ps i love u 🥰"; fi;
 }
 
 # Sensible PDF image compression
