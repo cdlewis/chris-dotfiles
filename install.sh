@@ -32,6 +32,9 @@ brew install \
 	mas \
 	Maccy
 
+# Warp terminal (https://www.warp.dev/)
+brew install --cask warp
+
 # Mac App Store
 mas install 937984704 # Amphetamine 'keep awake' app
 mas install 1091189122 # Bear – Markdown Notes
@@ -46,3 +49,7 @@ fi
 # Set new screenshots directory to avoid cluttering desktop
 mkdir ~/Desktop/screenshots
 defaults write com.apple.screencapture location ~/Desktop/screenshots
+
+# Update zshrc
+(echo "source $(pwd)/zshrc") >> ~/.zshrc
+source ~/.zshrc

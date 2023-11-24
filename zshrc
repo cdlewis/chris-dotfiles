@@ -10,7 +10,7 @@ DISABLE_UPDATE_PROMPT=true
 
 # Git Shortcuts
 alias gst="git status"
-alias gb="git branch"
+alias gb="git for-each-ref --sort=committerdate refs/heads --format='%(color:red)%(authordate:short) %(color:yellow)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset)) %(contents:lines=1)'"
 alias gsb="git-switch"
 alias gs="git status -uno"
 alias rebase="git fetch && git rebase origin/master"
