@@ -1,0 +1,11 @@
+# zshrc configurations safe for use in remote shells (vs desktop/laptop)
+
+# Git Shortcuts
+alias gst="git status"
+alias gb="git for-each-ref --sort=committerdate refs/heads --format='%(color:red)%(authordate:short) %(color:yellow)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset)) %(contents:lines=1)'"
+alias gs="git status -uno"
+alias rebase="git pull -r"
+
+# Arc Quality of Life
+EDITOR=vim
+alias yeet="arc diff --add-all --message \"We made improvements and squashed bugs so this diff is even better for you.\""

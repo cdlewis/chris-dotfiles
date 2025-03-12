@@ -10,16 +10,8 @@ DISABLE_UPDATE_PROMPT=true
 CELLAR="$(brew --cellar)"
 GHOSTSCRIPT="$(find $CELLAR -name gs | head -n 1)"
 
-# Git Shortcuts
-alias gst="git status"
-alias gb="git for-each-ref --sort=committerdate refs/heads --format='%(color:red)%(authordate:short) %(color:yellow)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset)) %(contents:lines=1)'"
-alias gsb="git-switch"
-alias gs="git status -uno"
-alias rebase="git fetch && git rebase origin/master"
-
-# Arc Quality of Life
-EDITOR=vim
-alias yeet="arc diff --add-all --message \"We made improvements and squashed bugs so this diff is even better for you.\""
+# Inherit configurations from remote shell
+source zsh_remote_shell
 
 # Kill any application listening on a given port
 killport() {
