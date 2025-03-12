@@ -30,7 +30,8 @@ brew install \
 	vim \
 	gs \
 	mas \
-	Maccy
+	Maccy \
+	difftastic
 
 # Warp terminal (https://www.warp.dev/)
 brew install --cask warp

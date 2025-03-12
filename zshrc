@@ -7,6 +7,8 @@ ZSH_POWERLINE_SHOW_GIT_BRANCH_ONLY="true"
 ZSH_POWERLINE_SHOW_OS="false"
 ZSH_THEME="solarized-powerline"
 DISABLE_UPDATE_PROMPT=true
+CELLAR="$(brew --cellar)"
+GHOSTSCRIPT="$(find $CELLAR -name gs | head -n 1)"
 
 # Git Shortcuts
 alias gst="git status"
@@ -44,7 +46,7 @@ precmd() {
 
 # Sensible PDF image compression
 compressPdf () {
-  gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dCompatibilityLevel=1.7 -dNOPAUSE -dQUIET -dPDFSETTINGS=/prepress -sOutputFile="$1_compressed.pdf" "$1"
+  $GHOSTSCRIPT -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dCompatibilityLevel=1.7 -dNOPAUSE -dQUIET -dPDFSETTINGS=/prepress -sOutputFile="$1_compressed.pdf" "$1"
 }
 
 # Nobody asked for you to send me an HEIC
