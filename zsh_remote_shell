@@ -5,6 +5,8 @@ alias gb="git for-each-ref --sort=committerdate refs/heads --format='%(color:red
 alias gs="git status -uno"
 alias rb="git pull -r"
 
+export GIT_EDITOR=vim
+
 # Arc Quality of Life
 EDITOR=vim
 alias yeet="arc diff --add-all --message \"We made improvements and squashed bugs so this diff is even better for you.\""
