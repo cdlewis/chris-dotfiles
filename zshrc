@@ -41,3 +41,8 @@ convertHeic () {
   mkdir -p Converted
   for i in *.HEIC; do sips -s format jpeg $i --out Converted/$i.jpeg; done
 }
+
+# Automatically add all ssh keys
+ssh-add -A 2>/dev/null;
+
+
