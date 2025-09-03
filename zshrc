@@ -13,11 +13,6 @@ GHOSTSCRIPT="$(find $CELLAR -name gs | head -n 1)"
 # Inherit configurations from remote shell
 source zsh_remote_shell
 
-# Kill any application listening on a given port
-killport() {
-  lsof -nti:$1 | xargs kill -9
-}
-
 # Allow sudo to expand aliases by making sudo itself an alias
 alias sudo='sudo '
 

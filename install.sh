@@ -22,6 +22,7 @@ brew install go
 brew install node
 brew install coursier/formulas/coursier
 cs setup
+brew install mactex
 
 # Utilities
 brew install \
@@ -50,6 +51,9 @@ fi
 # Set new screenshots directory to avoid cluttering desktop
 mkdir ~/Desktop/screenshots
 defaults write com.apple.screencapture location ~/Desktop/screenshots
+
+# Stop bouncing icons
+defaults write com.apple.dock no-bouncing -bool TRUE
 
 # Update zshrc
 (echo "source $(pwd)/zshrc") >> ~/.zshrc

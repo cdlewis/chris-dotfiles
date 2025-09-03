@@ -12,3 +12,8 @@ EDITOR=vim
 alias yeet="arc diff --add-all --message \"We made improvements and squashed bugs so this diff is even better for you.\""
 if [ -z arc ]; then arc set-config editor vim; fi;
 
+# Kill any application listening on a given port
+killport() {
+  lsof -nti:$1 | xargs kill -9
+}
+
